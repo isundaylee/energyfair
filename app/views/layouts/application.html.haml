@@ -9,7 +9,7 @@
     = csrf_meta_tags
   %body
     %ul#nav
-      %li.current= link_to 'Homepage', root_path
-      %li= link_to 'Students', '#'
-      %li= link_to 'Employers', '#'
+      %li{class: @current == 'Homepage' ? 'current' : ''}= link_to 'Homepage', root_path
+      %li{class: @current == 'Students' ? 'current' : ''}= link_to 'Students', new_student_path
+      %li{class: @current == 'Employers' ? 'current' : ''}= link_to 'Employers', '#'
     = yield

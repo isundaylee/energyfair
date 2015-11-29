@@ -1,0 +1,30 @@
+#homespan
+  #overlay
+    %h1.form-title Student Signup
+    = form_for @student, html: {class: 'styled-form'} do |f|
+      - if !@student.errors.full_messages.empty?
+        .errors
+          = @student.errors.full_messages.join("<br>").html_safe
+      %p.prompt What is your name?
+      = f.text_field :name
+      %p.prompt What is your university email address?
+      = f.text_field :email
+      %p.prompt Which university do you go to?
+      = f.select :university, options_for_select(Student::UNIVERSITIES, @student.university)
+      %p.prompt What degree are you pursuing?
+      = f.select :degree, options_for_select(Student::DEGREES, @student.degree)
+      %p.prompt What major(s) are you pursuing?
+      = f.text_field :major
+      %p.prompt What is your graduation year?
+      = f.select :graduation_year, options_for_select(Student::GRADUATION_YEARS, @student.graduation_year)
+      %p.prompt What is your graduation month?
+      = f.select :graduation_month, options_for_select(Student::GRADUATION_MONTHS, @student.graduation_month)
+      %p.prompt What is is your current country of citizenship?
+      = f.country_select :citizenship
+      %p.prompt Which (if any) is the company you're most interested in?
+      = f.select :top_company_1, options_for_select(Student.top_company_options, @student.top_company_1)
+      %p.prompt Which (if any) is the company you're second most interested in?
+      = f.select :top_company_2, options_for_select(Student.top_company_options, @student.top_company_2)
+      %p.prompt Which (if any) is the company you're third most interested in?
+      = f.select :top_company_3, options_for_select(Student.top_company_options, @student.top_company_3)
+      = f.submit 'Submit'

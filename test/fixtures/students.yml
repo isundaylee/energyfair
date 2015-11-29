@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  university: MyString
+  degree: MyString
+  major: MyString
+  interests: MyText
+  graduation_month: 1
+  graduation_year: 1
+  citizenship: MyString
+  top_companies: MyText
+
+two:
+  university: MyString
+  degree: MyString
+  major: MyString
+  interests: MyText
+  graduation_month: 1
+  graduation_year: 1
+  citizenship: MyString
+  top_companies: MyText
