@@ -23,6 +23,10 @@ class Student < ActiveRecord::Base
   validates :name, presence: true, length: {minimum: 3, maximum: 50}
   validates :email, presence: true, length: {minimum: 3, maximum: 50}
 
+  has_attached_file :resume
+
+  validates_attachment_content_type :resume, content_type: ['application/pdf'], message: 'must be PDF files. '
+
   def top_company_1
     self.top_companies ||= ['', '', '']
     self.top_companies[0]

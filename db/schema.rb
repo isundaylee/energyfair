@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129065900) do
+ActiveRecord::Schema.define(version: 20151129211118) do
 
   create_table "students", force: :cascade do |t|
     t.string   "name"
@@ -24,8 +24,12 @@ ActiveRecord::Schema.define(version: 20151129065900) do
     t.integer  "graduation_year"
     t.string   "citizenship"
     t.text     "top_companies"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "resume_file_name"
+    t.string   "resume_content_type"
+    t.integer  "resume_file_size"
+    t.datetime "resume_updated_at"
   end
 
 end

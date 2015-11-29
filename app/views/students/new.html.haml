@@ -27,4 +27,6 @@
       = f.select :top_company_2, options_for_select(Student.top_company_options, @student.top_company_2)
       %p.prompt Which (if any) is the company you're third most interested in?
       = f.select :top_company_3, options_for_select(Student.top_company_options, @student.top_company_3)
+      %p.prompt Upload your resume below (optional):
+      = f.file_field :resume
       = f.submit 'Submit'
