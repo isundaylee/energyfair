@@ -1,0 +1,33 @@
+@import "bourbon"
+@import "neat"
+
+@import "pages"
+
+#nav
+  position: absolute
+  top: 0
+  right: 0
+  z-index: 100
+
+  li
+    display: inline-block
+    margin: 0.5em 1em
+    padding: 0.5em 1em
+    font-weight: 300
+
+    &:last-child
+      margin-right: 2em
+
+    &:hover
+      background-color: #888
+
+    a
+      text-decoration: none
+      color: white
+
+    &.current
+      background-color: white
+
+      a
+        color: black
+

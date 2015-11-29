@@ -1,0 +1,83 @@
+body
+  margin: 0
+  font-family: "Source Sans Pro", sans-serif
+
+#homespan
+  position: relative
+  height: 100vh
+  overflow: hidden
+
+  background: url("/images/background.jpg") no-repeat center center fixed
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  -o-background-size: cover
+  background-size: cover
+
+  #background
+    height: 100%
+
+  #overlay
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    background-color: rgba(0, 0, 0, 0.6)
+    text-align: center
+
+    h1
+      font-size: 4em
+      color: white
+      font-weight: 600
+      text-align: center
+      margin-bottom: 0
+
+    h2
+      font-size: 2em
+      color: white
+      font-weight: 600
+      text-align: center
+
+    .intro
+      font-size: 1.2em
+      color: white
+      font-weight: 300
+      text-align: center
+      width: 800px
+      margin: 0 auto 5vh
+
+    #logo
+      display: block
+      margin: 8vh auto 0
+      height: 32vh
+
+    a
+      display: inline-block
+      font-size: 1.1em
+      width: 200px
+      text-align: center
+      background-color: #729B55
+      border: 5px solid #3A502C
+      padding: 10px
+      text-decoration: none
+      color: white
+      font-weight: 600
+      margin: 0 15px
+
+      &:hover
+        background-color: lighten(#3A502C, 15)
+        color: darken(white, 15)
+
+#faq
+  @include outer-container
+
+  padding-top: 50px
+  padding-bottom: 50px
+
+  .question
+    font-weight: 600
+    font-size: 1.5em
+
+  .answer
+    font-weight: 300
+    font-size: 1.2em
