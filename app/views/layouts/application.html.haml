@@ -8,6 +8,8 @@
     = javascript_include_tag :application
     = csrf_meta_tags
   %body
+    - if flash[:success]
+      %script= "alert('#{flash[:success]}'); "
     %ul#nav
       %li{class: @current == 'Homepage' ? 'current' : ''}= link_to 'Homepage', root_path
       %li{class: @current == 'Students' ? 'current' : ''}= link_to 'Students', new_student_path
