@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129211118) do
+ActiveRecord::Schema.define(version: 20151129232058) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "logo_permission"
+    t.integer  "level"
+    t.string   "gigawatt_option"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "zip_code"
+    t.string   "telephone"
+    t.integer  "attendances"
+    t.text     "attendee_names"
+    t.text     "attendee_emails"
+    t.text     "attendee_telephones"
+    t.boolean  "additional_needed"
+    t.text     "additional"
+    t.text     "items"
+    t.string   "networking_event"
+    t.text     "comment"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+  end
 
   create_table "students", force: :cascade do |t|
     t.string   "name"

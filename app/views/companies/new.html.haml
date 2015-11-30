@@ -1,0 +1,56 @@
+#homespan
+  #overlay
+    %h1.form-title Company Signup
+    = form_for @company, html: {class: 'styled-form'} do |f|
+      - if !@company.errors.full_messages.empty?
+        .errors
+          = @company.errors.full_messages.join("<br>").html_safe
+      %p.prompt What is the name of your company?
+      = f.text_field :name
+      %p.prompt Please provide a brief description of your organization. This will be used for marketing purposes on our behalf.
+      = f.text_area :description
+      %p.prompt Upload your company/organisation logo below:
+      = f.file_field :logo
+      %p.prompt Do you grant us permission to use the logo in marketing materials?
+      = f.check_box :logo_permission, {}, 'true', 'false'
+      = f.label :logo_permission, "Yes"
+      %p.prompt What is the sponsorship level you are interested in?
+      = f.select :level, options_for_select(Company::LEVELS, @company.level)
+      %p.prompt Which of the following options would you be interested in?
+      - Company::GIGAWATT_OPTIONS.each do |o|
+        = check_box_tag 'company[gigawatt_option][]', o, @company.gigawatt_option.try(:include?, o)
+        = f.label 'gigawatt_option[]', o
+        %br
+      %p.prompt Provide below the billing/mailing address for the invoice to be delivered to. Street address:
+      = f.text_field :street_address
+      %p.prompt City:
+      = f.text_field :city
+      %p.prompt Zip Code:
+      = f.text_field :zip_code
+      %p.prompt Telephone Number:
+      = f.text_field :telephone
+      %p.prompt How many representatives will be in attendance?
+      = f.select :attendances, options_for_select((1..5).to_a, @company.attendances)
+      - 0.upto(4) do |i|
+        %p.prompt What is the name of the #{(i + 1).ordinalize} attending representative?
+        = text_field_tag "company[attendee_names][]", @company.attendee_names.try(:[], i)
+        %p.prompt What is the email of the #{(i + 1).ordinalize} attending representative?
+        = text_field_tag "company[attendee_emails][]", @company.attendee_emails.try(:[], i)
+        %p.prompt What is the telephone number of the #{(i + 1).ordinalize} attending representative?
+        = text_field_tag "company[attendee_telephones][]", @company.attendee_telephones.try(:[], i)
+      %p.prompt Check below if your organization requires additional space or equipment. Each organization will be provided with a 30” diameter cocktail table by default.
+      = f.check_box :additional_needed, {}, 'true', 'false'
+      = f.label :additional_needed, 'Additional space/equipment needed. '
+      %p.prompt Please list any additional space or equipment that the company requires.
+      = f.text_field :additional
+      %p.prompt Check below if your organization plans on bringing any of the following promotional items for advertising purposes.
+      - Company::ITEMS.each do |a|
+        = check_box_tag 'company[items][]', a, @company.items.try(:include?, a)
+        = f.label 'additional[]', a
+      %p.prompt Fill the box below if your organization plans on bringing any promotional item not listed above.
+      = text_field_tag 'company[items][]', @company.custom_item
+      %p.prompt Would you be interested in participating in the private networking event with selected students after the Career Fair? (Each organization will be given a selected number of invitations to hand out to candidates that you are interested in meeting at this banquet after the Career Fair).
+      = f.select :networking_event, options_for_select(Company::NETWORKING_EVENTS, @company.networking_event)
+      %p.prompt Additional requests/comments (Please let us know if there is anything we can do to improve your experience!).
+      = f.text_area :comment
+      = f.submit 'Submit'

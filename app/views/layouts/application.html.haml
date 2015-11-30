@@ -13,5 +13,5 @@
     %ul#nav
       %li{class: @current == 'Homepage' ? 'current' : ''}= link_to 'Homepage', root_path
       %li{class: @current == 'Students' ? 'current' : ''}= link_to 'Students', new_student_path
-      %li{class: @current == 'Employers' ? 'current' : ''}= link_to 'Employers', '#'
+      %li{class: @current == 'Employers' ? 'current' : ''}= link_to 'Employers', new_company_path
     = yield

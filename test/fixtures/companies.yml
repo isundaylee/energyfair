@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  logo_permission: false
+  level: 1
+  gigawatt_option: MyString
+  street_address: MyString
+  city: MyString
+  zip_code: MyString
+  telephone: MyString
+  attendances: 1
+  attendee_names: MyText
+  attendee_emails: MyText
+  attendee_telephones: MyText
+  additional_needed: false
+  additional: MyText
+  items: MyText
+  networking_event: MyString
+  comment: MyText
+
+two:
+  name: MyString
+  description: MyText
+  logo_permission: false
+  level: 1
+  gigawatt_option: MyString
+  street_address: MyString
+  city: MyString
+  zip_code: MyString
+  telephone: MyString
+  attendances: 1
+  attendee_names: MyText
+  attendee_emails: MyText
+  attendee_telephones: MyText
+  additional_needed: false
+  additional: MyText
+  items: MyText
+  networking_event: MyString
+  comment: MyText
