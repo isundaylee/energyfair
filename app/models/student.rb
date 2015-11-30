@@ -58,6 +58,6 @@ class Student < ActiveRecord::Base
   end
 
   def self.top_company_options
-    ['', 'Apple', 'Google', 'Astray']
+    [''] + Company.all.map(&:name)
   end
 end
