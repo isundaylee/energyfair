@@ -1,7 +1,10 @@
 class Student < ActiveRecord::Base
   UNIVERSITIES = ['MIT', 'Harvard']
+
   DEGREES = ['Undergraduate', 'Graduate']
+
   GRADUATION_YEARS = (2015...2020).to_a
+
   GRADUATION_MONTHS = [
     ['January', 1],
     ['February', 2],
@@ -15,6 +18,17 @@ class Student < ActiveRecord::Base
     ['October', 10],
     ['November', 11],
     ['December', 12],
+  ]
+
+  INTERESTS = [
+    'Oil Industry',
+    'Energy consulting',
+    'Clean tech',
+    'Power grids',
+    'Electric vehicles',
+    'Software',
+    'Energy startups',
+    'R&D'
   ]
 
   serialize :interests

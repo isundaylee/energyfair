@@ -15,6 +15,11 @@
       = f.select :degree, options_for_select(Student::DEGREES, @student.degree)
       %p.prompt What major(s) are you pursuing?
       = f.text_field :major
+      %p.prompt Check your primary interests below:
+      - Student::INTERESTS.each do |i|
+        = check_box_tag 'student[interests][]', i, @student.interests.try(:include?, i)
+        = f.label 'interests[]', i
+        %br/
       %p.prompt What is your graduation year?
       = f.select :graduation_year, options_for_select(Student::GRADUATION_YEARS, @student.graduation_year)
       %p.prompt What is your graduation month?
