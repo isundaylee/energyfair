@@ -2,16 +2,20 @@ body
   margin: 0
   font-family: "Source Sans Pro", sans-serif
 
-#homespan
-  position: relative
-  height: 100vh
-  overflow: hidden
-
   background: url("/images/background.jpg") no-repeat center center fixed
   -webkit-background-size: cover
   -moz-background-size: cover
   -o-background-size: cover
   background-size: cover
+
+#students_new, #companies_new, #students_create, #companies_create
+  #homespan #overlay
+    overflow: scroll
+
+#homespan
+  position: relative
+  height: 100vh
+  overflow: hidden
 
   #background
     height: 100%
@@ -24,7 +28,7 @@ body
     width: 100%
     background-color: rgba(0, 0, 0, 0.6)
     text-align: center
-    overflow: scroll
+    overflow: hidden
 
     h1
       font-size: 4em
@@ -39,17 +43,9 @@ body
       font-weight: 600
       text-align: center
 
-    .intro
-      font-size: 1.2em
-      color: white
-      font-weight: 300
-      text-align: center
-      width: 800px
-      margin: 0 auto 5vh
-
     #logo
       display: block
-      margin: 8vh auto 0
+      margin: 16vh auto 0
       height: 32vh
 
     a
@@ -69,16 +65,75 @@ body
         background-color: lighten(#3A502C, 15)
         color: darken(white, 15)
 
+.white-outer
+  background-color: white
+
+.non-white-outer
+  background-color: rgba(0, 0, 0, 0.6)
+
+  h1, h2, h3, h4, p
+    color: white
+
+#intro
+  @include outer-container
+
+  padding: 20px 0 40px
+
+  p
+    font-size: 1.2em
+    color: black
+    font-weight: 300
+    text-align: center
+
+  h3
+    font-size: 2em
+    font-weight: 400
+    text-align: center
+    margin-top: 50px
+
+  h4
+    font-size: 1.5em
+    font-weight: 400
+    text-align: center
+
+  #gigawatts, #megawatts, #kilowatts
+    width: 100%
+    overflow: auto
+
+    .logo-box
+      @include span-columns(1 of 3)
+      @include omega(3n)
+
+      img
+        width: 80%
+        margin: 0 auto
+        display: block
+
+      p
+        font-size: 1.5em
+        margin-top: 15px
+        margin-bottom: 15px
+
 #faq
   @include outer-container
 
   padding-top: 50px
   padding-bottom: 50px
 
+  h3
+    font-size: 2em
+    font-weight: 400
+    text-align: center
+    margin-bottom: 60px
+
   .question
     font-weight: 600
     font-size: 1.5em
 
+    color: white
+
   .answer
-    font-weight: 300
+    font-weight: 400
     font-size: 1.2em
+
+    color: white
