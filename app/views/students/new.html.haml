@@ -34,4 +34,7 @@
       = f.select :top_company_3, options_for_select(Student.top_company_options, @student.top_company_3)
       %p.prompt Upload your resume below (optional):
       = f.file_field :resume
+      %p.prompt Check below if you provide permission for us to distribute your resume to all interested employers.
+      = f.check_box :resume_permission, {}, 'true', 'false'
+      = f.label :resume_permission, 'I provide permission for my resume to be distributed to all interested employers. '
       = f.submit 'Submit'
