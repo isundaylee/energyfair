@@ -31,6 +31,8 @@ class Company < ActiveRecord::Base
     'I would like more information about this event before deciding. '
   ]
 
+  PASSWORD = Rails.env.production? ? ENV['COMPANY_PASS'] : 'password'
+
   serialize :attendee_names
   serialize :attendee_emails
   serialize :attendee_telephones
@@ -48,9 +50,18 @@ class Company < ActiveRecord::Base
   validates_attachment_presence :logo
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
+  validate :valid_password, on: :create
+
+  attr_accessor :password
+
   def custom_item
     items.nil? ?
       '' :
       (items.select { |a| !ITEMS.include?(a) }.first || '')
   end
+
+  private
+    def valid_password
+      errors.add(:password, 'is not valid. ') unless password == PASSWORD
+    end
 end
