@@ -20,6 +20,10 @@
         = check_box_tag 'student[interests][]', i, @student.interests.try(:include?, i)
         = f.label 'interests[]', i
         %br/
+      %p.prompt Check the types of jobs you are interested in:
+      - Student::WORK_TYPES.each do |t|
+        = check_box_tag 'student[work_type][]', t, @student.work_type.try(:include?, t)
+        = f.label 'work_type[]', t
       %p.prompt What is your graduation year?
       = f.select :graduation_year, options_for_select(Student::GRADUATION_YEARS, @student.graduation_year)
       %p.prompt What is your graduation month?

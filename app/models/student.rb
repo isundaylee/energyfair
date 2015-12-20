@@ -31,8 +31,14 @@ class Student < ActiveRecord::Base
     'R&D'
   ]
 
+  WORK_TYPES = [
+    'Internship',
+    'Full-time'
+  ]
+
   serialize :interests
   serialize :top_companies
+  serialize :work_type
 
   validates :name, presence: true, length: {minimum: 3, maximum: 50}
   validates :email, presence: true, length: {minimum: 3, maximum: 50}
