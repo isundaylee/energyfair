@@ -10,6 +10,10 @@
   %body{id: "#{controller_name}_#{action_name}"}
     - if flash[:success]
       %script= "alert('#{flash[:success]}'); "
+    %ul#nav_left
+      %li= link_to 'Sponsors', '#intro'
+      %li= link_to 'FAQ', '#faq'
+      %li= link_to 'Our Team', '#team'
     %ul#nav
       %li{class: @current == 'Homepage' ? 'current' : ''}= link_to 'Homepage', root_path
       %li{class: @current == 'Students' ? 'current' : ''}= link_to 'Students', new_student_path
