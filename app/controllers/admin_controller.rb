@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   require 'zip'
+  require 'csv'
 
   def index
   end
@@ -26,5 +27,75 @@ class AdminController < ApplicationController
       tempfile.close
       tempfile.unlink
     end
+  end
+
+  def students
+    filename = 'students.csv'
+    tempfile = Tempfile.new(filename)
+
+    CSV.open(tempfile.path, 'w') do |csv|
+      csv << ['Name', 'Email', 'University', 'Degree', 'Major', 'Interests', 'Graduation Month', 'Graduation Year', 'Citizenship', 'Top Interested Companies', 'Work Types Interested']
+      Student.all.each do |s|
+        csv << [s.name, s.email, s.university, s.degree, s.major, s.interests.try(:join, ", "), s.graduation_month, s.graduation_year, ISO3166::Country[s.citizenship], s.top_companies.select { |c| !c.empty? }.try(:join, ", "), s.work_type.try(:join, ", ")]
+      end
+    end
+
+    send_data(File.read(tempfile.path), type: 'text/csv', filename: filename)
+  end
+
+  def companies
+    filename = 'companies.csv'
+    tempfile = Tempfile.new(filename)
+
+    CSV.open(tempfile.path, 'w') do |csv|
+      row = []
+      row += ['Name', 'Description', 'Logo Permission', 'Level', 'Gigawatt Option', 'Street Address', 'City', 'Zip Code', 'Telephone', 'Number of Attendances']
+
+      1.upto(5) do |i|
+        row += [
+          'Attendee Name #' + i.to_s,
+          'Attendee Email #' + i.to_s,
+          'Attendee Telephone #' + i.to_s,
+        ]
+      end
+
+      row += ['Additional Space/Equipment', 'Promo Items', 'Networking Event', 'Comment']
+      csv << row
+
+      Company.all.each do |c|
+        row = []
+        row += [
+          c.name,
+          c.description,
+          (c.logo_permission ? 'Yes' : 'No'),
+          Company::LEVELS_TO_NAMES[c.level],
+          (c.level == 2 ? c.gigawatt_option : 'N/A'),
+          c.street_address,
+          c.city,
+          c.zip_code,
+          c.telephone,
+          c.attendances
+        ]
+
+        1.upto(5) do |i|
+          row += [
+            c.attendee_names[i - 1],
+            c.attendee_emails[i - 1],
+            c.attendee_telephones[i - 1],
+          ]
+        end
+
+        row += [
+          (c.additional_needed ? c.additional : 'Not needed. '),
+          c.items.try(:join, ','),
+          c.networking_event,
+          c.comment
+        ]
+
+        csv << row
+      end
+    end
+
+    send_data(File.read(tempfile.path), type: 'text/csv', filename: filename)
   end
 end

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'admin' => 'admin#index'
   get 'admin/resumes' => 'admin#resumes', as: 'admin_resume'
+  get 'admin/students' => 'admin#students', as: 'admin_students'
+  get 'admin/companies' => 'admin#companies', as: 'admin_companies'
 
   root 'pages#homepage'
 

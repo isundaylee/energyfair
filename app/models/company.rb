@@ -5,6 +5,12 @@ class Company < ActiveRecord::Base
     ['Kilowatts', 0]
   ]
 
+  LEVELS_TO_NAMES = {
+    0 => 'Kilowatts',
+    1 => 'Megawatts',
+    2 => 'Gigawatts'
+  }
+
   GIGAWATT_OPTIONS = [
     'Information sessions during week of Energy Career Fair. ',
     'Information sessions prior to the Energy Career Fair. ',
@@ -28,7 +34,6 @@ class Company < ActiveRecord::Base
   serialize :attendee_names
   serialize :attendee_emails
   serialize :attendee_telephones
-  serialize :additional
   serialize :items
   serialize :gigawatt_option
 
