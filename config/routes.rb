@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'admin' => 'admin#index'
+  get 'admin/resumes' => 'admin#resumes', as: 'admin_resume'
+
   root 'pages#homepage'
 
   resources :students, only: [:new, :create]
