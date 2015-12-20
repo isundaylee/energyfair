@@ -2,6 +2,11 @@ class AdminController < ApplicationController
   require 'zip'
   require 'csv'
 
+  ADMIN_USERNAME = Rails.env.production? ? ENV['ADMIN_USER'] : 'user'
+  ADMIN_PASSWORD = Rails.env.production? ? ENV['ADMIN_PASS'] : 'pass'
+
+  http_basic_authenticate_with name: ADMIN_USERNAME, password: ADMIN_PASSWORD
+
   def index
   end
 
