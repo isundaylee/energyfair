@@ -12,8 +12,10 @@
       %p.prompt Upload your company/organisation logo below:
       = f.file_field :logo
       %p.prompt Do you grant us permission to use the logo in marketing materials?
-      = f.check_box :logo_permission, {}, 'true', 'false'
+      = f.radio_button :logo_permission, 'true'
       = f.label :logo_permission, "Yes"
+      = f.radio_button :logo_permission, 'false'
+      = f.label :logo_permission, "No"
       %p.prompt What is the sponsorship level you are interested in?
       = f.select :level, options_for_select(Company::LEVELS, @company.level)
       %p.prompt{'data-hide' => 'gigawatt'}  Which of the following options would you be interested in?
@@ -29,8 +31,8 @@
       = f.text_field :zip_code
       %p.prompt Telephone Number:
       = f.text_field :telephone
-      %p.prompt How many representatives will be in attendance?
-      = f.select :attendances, options_for_select((1..5).to_a, @company.attendances)
+      %p.prompt How many representatives will be in attendance? (optional)
+      = f.select :attendances, options_for_select((0..5).to_a, @company.attendances)
       - 0.upto(4) do |i|
         %p.prompt{'data-attendee' => i} What is the name of the #{(i + 1).ordinalize} attending representative?
         = text_field_tag "company[attendee_names][]", @company.attendee_names.try(:[], i), {'data-attendee' => i}
