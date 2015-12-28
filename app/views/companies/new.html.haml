@@ -23,7 +23,10 @@
         = check_box_tag 'company[gigawatt_option][]', o, @company.gigawatt_option.try(:include?, o), {'data-hide' => 'gigawatt'}
         = f.label 'gigawatt_option[]', o, {'data-hide' => 'gigawatt'}
         %br/
-      %p.prompt Provide below the billing/mailing address for the invoice to be delivered to. Street address:
+      %p.prompt
+        Please provide below the billing/mailing address for the invoice.
+        %br/
+        Street address:
       = f.text_field :street_address
       %p.prompt City:
       = f.text_field :city
