@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
-  UNIVERSITIES = ['MIT', 'Harvard']
+  UNIVERSITIES = ['MIT', 'Harvard', 'Other']
 
   DEGREES = ['Undergraduate', 'Graduate']
 
