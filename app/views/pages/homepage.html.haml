@@ -24,11 +24,13 @@
     #megawatts
       - Company.where('level = ?', 1).each do |c|
         .logo-box
+          = image_tag c.logo.url(:medium)
           %p= c.name
     %h4 Kilowatts Sponsors
     #kilowatts
       - Company.where('level = ?', 0).each do |c|
         .logo-box
+          = image_tag c.logo.url(:medium)
           %p= c.name
 .non-white-outer
   #faq
