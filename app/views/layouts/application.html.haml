@@ -7,8 +7,8 @@
     = javascript_include_tag :application
     = csrf_meta_tags
   %body{id: "#{controller_name}_#{action_name}"}
-    - if flash[:success]
-      %script= "alert('#{flash[:success]}'); "
+    - if flash[:success] or flash[:alert]
+      %script= "alert('#{flash[:success] or flash[:alert]}'); "
     %ul#nav_left
       %li= link_to 'Sponsors', '#intro'
       %li= link_to 'FAQ', '#faq'

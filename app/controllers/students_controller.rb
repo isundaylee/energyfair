@@ -1,5 +1,7 @@
 class StudentsController < ApplicationController
   def new
+    redirect_to root_url, flash: {alert: 'Our resume drop has been closed. If you have any questions or concerns, please email ute-expo@mit.edu. We look forward to seeing you at the career fair.'}
+
     @current = 'Students'
     @student = Student.new
   end
