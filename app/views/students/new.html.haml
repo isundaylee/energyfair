@@ -26,10 +26,10 @@
         = f.label 'work_type[]', t
       %p.prompt What is your graduation year?
       = f.select :graduation_year, options_for_select(Student::GRADUATION_YEARS, @student.graduation_year)
-      %p.prompt What is your graduation month?
-      = f.select :graduation_month, options_for_select(Student::GRADUATION_MONTHS, @student.graduation_month)
-      %p.prompt What is is your current country of citizenship?
-      = f.country_select :citizenship
+      / %p.prompt What is your graduation month?
+      / = f.select :graduation_month, options_for_select(Student::GRADUATION_MONTHS, @student.graduation_month)
+      / %p.prompt What is is your current country of citizenship?
+      / = f.country_select :citizenship
       / %p.prompt Which (if any) is the company you're most interested in?
       / = f.select :top_company_1, options_for_select(Student.top_company_options, @student.top_company_1)
       / %p.prompt Which (if any) is the company you're second most interested in?
