@@ -9,8 +9,8 @@
       = f.text_field :name
       %p.prompt What is your university email address?
       = f.text_field :email
-      %p.prompt Which university do you go to?
-      = f.select :university, options_for_select(Student::UNIVERSITIES, @student.university)
+      / %p.prompt Which university do you go to?
+      / = f.select :university, options_for_select(Student::UNIVERSITIES, @student.university)
       %p.prompt What degree are you pursuing?
       = f.select :degree, options_for_select(Student::DEGREES, @student.degree)
       %p.prompt What major(s) are you pursuing?
