@@ -21,14 +21,24 @@ class Student < ActiveRecord::Base
   ]
 
   INTERESTS = [
-    'Oil Industry',
-    'Energy consulting',
-    'Clean tech',
-    'Power grids',
-    'Electric vehicles',
-    'Software',
-    'Energy startups',
-    'R&D'
+    'Solar',
+    'Wind',
+    'Storage',
+    'Future Grid',
+    'Bio Energy',
+    'Energy & Environment',
+    'Nuclear',
+    'Oil & Gas',
+    'Building Sustainability',
+    'Other'
+  ]
+
+  JOIN_REASONS = [
+    'Job opportunities',
+    'To meet others interested in energy',
+    'To expand knowledge of energy space',
+    'Leadership opportunities',
+    'Other'
   ]
 
   WORK_TYPES = [
@@ -37,6 +47,7 @@ class Student < ActiveRecord::Base
   ]
 
   serialize :interests
+  serialize :join_reasons
   serialize :top_companies
   serialize :work_type
 
