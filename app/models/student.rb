@@ -3,7 +3,7 @@ class Student < ActiveRecord::Base
 
   DEGREES = ['Undergraduate', 'Graduate']
 
-  GRADUATION_YEARS = (2015...2020).to_a
+  GRADUATION_YEARS = (2000...2030).to_a
 
   GRADUATION_MONTHS = [
     ['January', 1],

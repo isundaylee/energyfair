@@ -39,9 +39,29 @@ class AdminController < ApplicationController
     tempfile = Tempfile.new(filename)
 
     CSV.open(tempfile.path, 'w') do |csv|
-      csv << ['Name', 'Email', 'University', 'Degree', 'Major', 'Interests', 'Graduation Month', 'Graduation Year', 'Citizenship', 'Top Interested Companies', 'Work Types Interested']
+      csv << [
+        'Name',
+        'Email',
+        'Degree',
+        'Major',
+        'Interests',
+        'Why Join',
+        'Graduation Year',
+        'Work Types Interested',
+        'Comments'
+      ]
       Student.all.each do |s|
-        csv << [s.name, s.email, s.university, s.degree, s.major, s.interests.try(:join, ", "), s.graduation_month, s.graduation_year, ISO3166::Country[s.citizenship], s.top_companies.select { |c| !c.empty? }.try(:join, ", "), s.work_type.try(:join, ", ")]
+        csv << [
+          s.name,
+          s.email,
+          s.degree,
+          s.major,
+          s.interests.try(:join, ", "),
+          s.join_reasons.try(:join, ", "),
+          s.graduation_year == 0 ? 'Before 2000' : s.graduation_year,
+          s.work_type.try(:join, ", "),
+          s.comments
+        ]
       end
     end
 

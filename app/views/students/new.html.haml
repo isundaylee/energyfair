@@ -25,7 +25,7 @@
         = check_box_tag 'student[work_type][]', t, @student.work_type.try(:include?, t)
         = f.label 'work_type[]', t
       %p.prompt What is your graduation year?
-      = f.select :graduation_year, options_for_select(Student::GRADUATION_YEARS, @student.graduation_year)
+      = f.select :graduation_year, options_for_select(Hash[[["Before 2000", 0]] + Student::GRADUATION_YEARS.map { |y| [y.to_s, y] }], @student.graduation_year)
       / %p.prompt What is your graduation month?
       / = f.select :graduation_month, options_for_select(Student::GRADUATION_MONTHS, @student.graduation_month)
       / %p.prompt What is is your current country of citizenship?
