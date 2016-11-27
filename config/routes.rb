@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   root 'pages#homepage'
 
+  get 'past_events' => 'pages#past_events', as: 'past_events'
+
   resources :students, only: [:new, :create]
   resources :companies, only: [:new, :create]
 
