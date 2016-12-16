@@ -4,3 +4,21 @@
     .galleria
       - 1.upto(68) do |i|
         = image_tag "2015/energycareerfair%02d.jpg" % i
+.white-outer
+  #intro
+    %h3 Sponsors of Energy Career Fair 2015
+    %h4 Gigawatts Sponsors
+    #gigawatts
+      - ['Boston Power', 'Gamechange Solar'].each do |c|
+        .logo-box
+          = image_tag "2015_sponsors/Gigawatt Sponsors/#{c}.jpg"
+    %h4 Megawatts Sponsors
+    #megawatts
+      - ['Navigant', 'Schneider Electric', 'Sunpower'].each do |c|
+        .logo-box
+          = image_tag "2015_sponsors/Megawatt Sponsors/#{c}.jpg"
+    %h4 Kilowatts Sponsors
+    #kilowatts
+      - ['8minutes', '1366 Technologies', 'Altaeros', 'CalWave', 'DC Energy Logo', 'EnerNoc', 'Ge', 'Loci Control', 'Resurety', 'Retroficiency', 'Schul', 'Shell', 'XLHybrids'].each do |c|
+        .logo-box
+          = image_tag "2015_sponsors/Kilowatt Sponsors/#{c}.jpg"
