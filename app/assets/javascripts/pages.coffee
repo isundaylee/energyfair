@@ -8,6 +8,8 @@ ready = ->
         imageCrop: true,
         transition: 'fade',
     })
+
+    Galleria.loadTheme('https://cdnjs.cloudflare.com/ajax/libs/galleria/1.4.5/themes/classic/galleria.classic.min.js')
     Galleria.run('.galleria')
 
 $(document).ready(ready)
