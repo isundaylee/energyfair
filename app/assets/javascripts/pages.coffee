@@ -4,11 +4,9 @@
 
 ready = ->
   if $('body#pages_past_events').length > 0
-    # Galleria.loadNamedTheme('classic')
     Galleria.configure({
         imageCrop: true,
         transition: 'fade',
-        log: true,
     })
     Galleria.run('.galleria')
 

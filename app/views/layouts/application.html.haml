@@ -4,7 +4,6 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
     %title MIT Energy Career Fair 2017
     = stylesheet_link_tag :application, :media => "all"
-    = javascript_include_tag :application
     = csrf_meta_tags
   %body{id: "#{controller_name}_#{action_name}"}
     - if flash[:success] or flash[:alert]
@@ -19,3 +18,4 @@
       %li{class: @current == 'Students' ? 'current' : ''}= link_to 'Students', new_student_path
       %li{class: @current == 'Employers' ? 'current' : ''}= link_to 'Employers', new_company_path
     = yield
+    = javascript_include_tag :application
