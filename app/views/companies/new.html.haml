@@ -58,6 +58,4 @@
       = f.select :networking_event, options_for_select(Company::NETWORKING_EVENTS, @company.networking_event)
       %p.prompt Additional requests/comments (Please let us know if there is anything we can do to improve your experience!).
       = f.text_area :comment
-      %p.prompt Enter below the password phrase provided to you for registration:
-      = f.password_field :password
       = f.submit 'Submit'
