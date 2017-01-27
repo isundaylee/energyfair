@@ -39,7 +39,11 @@ class Company < ActiveRecord::Base
   serialize :items
   serialize :gigawatt_option
 
-  has_attached_file :logo, styles: { medium: "300x300>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :logo, styles: {
+    medium: "300x300>",
+  }, convert_options: {
+    medium: "-gravity center -extent 300x300"
+  }, default_url: "/images/:style/missing.png"
 
   validates :name, presence: true, length: {minimum: 2, maximum: 100}
   validates :description, presence: true, length: {minimum: 2, maximum: 1000}
