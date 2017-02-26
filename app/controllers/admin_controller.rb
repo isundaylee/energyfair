@@ -21,7 +21,7 @@ class AdminController < ApplicationController
         Student.all.each do |s|
           if s.resume.exists?
             permission = (s.resume_permission? ? 'With Permission' : 'Without Permission')
-            zip.add("#{permission}/#{s.university} - #{s.degree}/#{s.name} (#{s.id}).pdf", s.resume.path)
+            zip.add("#{permission}/#{s.email.split('@').last} - #{s.degree}/#{s.name} (#{s.id}).pdf", s.resume.path)
           end
         end
       end
