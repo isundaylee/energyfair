@@ -4,31 +4,22 @@
     = image_tag 'logo.png', id: 'logo'
     %h1 MIT Energy Career Fair 2018
     %h2 CREATING CAREERS IN ENERGY FOR TOMORROW
+    %h3
+      7-10 pm, March 1, 2018, MIT Student Center Lobdell Hall
+      %br
+      84 Massachusetts Ave, Cambridge, MA 02139
     = link_to 'For Students', new_student_path, class: 'button'
     = link_to 'For Employers', new_company_path, class: 'button'
     %p.contact
       Contact us at
-      = link_to 'uge-expo@mit.edu', 'mailto:uge-expo@mit.edu'
+      = link_to 'ecf@mit.edu', 'mailto:ecf@mit.edu'
 .white-outer
   #intro
     %h3 About MIT Energy Career Fair
     %p.intro The MIT Energy Career Fair provides an intimate environment for top caliber students with a passion for energy and companies to connect. Evolved from the Energy EXPO, which in previous years connected PhD candidates, MBA students, and undergraduates from all majors with over 20 companies, this year’s Career Fair meets the demand for hundreds of students at MIT. This year, the Fair features a diverse range of industries: clean tech, oil & gas, energy storage and management, energy consulting, etc. The event is open to all MIT and Harvard students.
     %h3 Our Sponsors
-    %h4 Gigawatts Sponsors
-    #gigawatts
-      - Company.where('level = ?', 2).each do |c|
-        .logo-box
-          = image_tag c.logo.url(:medium)
-          %p= c.name
-    %h4 Megawatts Sponsors
-    #megawatts
-      - Company.where('level = ?', 1).each do |c|
-        .logo-box
-          = image_tag c.logo.url(:medium)
-          %p= c.name
-    %h4 Kilowatts Sponsors
-    #kilowatts
-      - Company.where('level = ?', 0).each do |c|
+    #sponsors
+      - Company.all.each do |c|
         .logo-box
           = image_tag c.logo.url(:medium)
           %p= c.name
@@ -59,21 +50,12 @@
     %p.question 8. Is the Energy Career Fair only open to MIT students?
     %p.answer The Energy Career Fair will be open to MIT and Harvard undergraduate and graduate students.
 
-    %p.question 9. Are attendees required to print name tags before the event?
-    %p.answer No, all name tag printing will be done at the entrance to the career fair.
-
-    %p.question 10. Will there be any events after the career fair?
-    %p.answer We will be holding an exclusive networking banquet immediately after the career fair. This dinner will be attended by a select group of employers and invited students.
-
-    %p.question 11. How do I attend the post-career fair banquet?
-    %p.answer If you receive an invitation to the banquet from a company attending the career fair, you will gain entrance to the post-event dinner.
-
-    %p.question 12. As an employer, where can I find more information about the event and details about sponsorship levels?
+    %p.question 9. As an employer, where can I find more information about the event and details about sponsorship levels?
     %p.answer
       Please see the attached
-      = link_to 'document', '/sponsorship_levels_2017.pdf'
+      = link_to 'document', '/sponsorship_levels_2018.pdf'
       for sponsorship levels and email
-      = link_to 'uge-expo@mit.edu', 'mailto:uge-expo@mit.edu'
+      = link_to 'ecf@mit.edu', 'mailto:ecf@mit.edu'
       with any questions.
 .white-outer
   #team

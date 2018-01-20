@@ -16,12 +16,12 @@
       = f.label :logo_permission, "Yes"
       = f.radio_button :logo_permission, 'false'
       = f.label :logo_permission, "No"
-      %p.prompt What is the sponsorship level you are interested in?
-      = f.select :level, options_for_select(Company::LEVELS, @company.level)
-      %p.prompt{'data-hide' => 'gigawatt'}  Which of the following options would you be interested in?
+      %p.prompt
+        Which of the following options would you be interested in? Note: more details about information sessions and interview rooms can be found in the employer packet on our main page or by contacting
+        %a{href: 'mailto:ecf@mit.edu'} ecf@mit.edu
       - Company::GIGAWATT_OPTIONS.each do |o|
-        = check_box_tag 'company[gigawatt_option][]', o, @company.gigawatt_option.try(:include?, o), {'data-hide' => 'gigawatt'}
-        = f.label 'gigawatt_option[]', o, {'data-hide' => 'gigawatt'}
+        = check_box_tag 'company[gigawatt_option][]', o, @company.gigawatt_option.try(:include?, o)
+        = f.label 'gigawatt_option[]', o
         %br/
       %p.prompt
         Please provide below the billing/mailing address for the invoice.
@@ -34,7 +34,7 @@
       = f.text_field :zip_code
       %p.prompt Telephone Number:
       = f.text_field :telephone
-      %p.prompt How many representatives will be in attendance? (optional)
+      %p.prompt How many representatives will be in attendance?
       = f.select :attendances, options_for_select((0..5).to_a, @company.attendances)
       - 0.upto(4) do |i|
         %p.prompt{'data-attendee' => i} What is the name of the #{(i + 1).ordinalize} attending representative?
@@ -54,8 +54,6 @@
         = f.label 'additional[]', a
       %p.prompt Fill the box below if your organization plans on bringing any promotional item not listed above.
       = text_field_tag 'company[items][]', @company.custom_item
-      %p.prompt Would you be interested in participating in the private networking event with selected students after the Career Fair? (Each organization will be given a selected number of invitations to hand out to candidates that you are interested in meeting at this banquet after the Career Fair).
-      = f.select :networking_event, options_for_select(Company::NETWORKING_EVENTS, @company.networking_event)
       %p.prompt Additional requests/comments (Please let us know if there is anything we can do to improve your experience!).
       = f.text_area :comment
       %p.prompt Enter below the password phrase provided to you for registration:

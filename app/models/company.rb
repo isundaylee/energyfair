@@ -1,16 +1,4 @@
 class Company < ActiveRecord::Base
-  LEVELS = [
-    ['Gigawatts', 2],
-    ['Megawatts', 1],
-    ['Kilowatts', 0]
-  ]
-
-  LEVELS_TO_NAMES = {
-    0 => 'Kilowatts',
-    1 => 'Megawatts',
-    2 => 'Gigawatts'
-  }
-
   GIGAWATT_OPTIONS = [
     'Information sessions during week of Energy Career Fair. ',
     'Information sessions prior to the Energy Career Fair. ',
@@ -23,12 +11,6 @@ class Company < ActiveRecord::Base
     'T-shirts',
     'Demos',
     'Stickers/Gadgets'
-  ]
-
-  NETWORKING_EVENTS = [
-    'Yes',
-    'No',
-    'I would like more information about this event before deciding. '
   ]
 
   PASSWORD = Rails.env.production? ? ENV['COMPANY_PASS'] : 'password'

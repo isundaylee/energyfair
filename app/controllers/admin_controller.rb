@@ -74,7 +74,7 @@ class AdminController < ApplicationController
 
     CSV.open(tempfile.path, 'w') do |csv|
       row = []
-      row += ['Name', 'Description', 'Logo Permission', 'Level', 'Gigawatt Option', 'Street Address', 'City', 'Zip Code', 'Telephone', 'Number of Attendances']
+      row += ['Name', 'Description', 'Logo Permission', 'Gigawatt Option', 'Street Address', 'City', 'Zip Code', 'Telephone', 'Number of Attendances']
 
       1.upto(5) do |i|
         row += [
@@ -84,7 +84,7 @@ class AdminController < ApplicationController
         ]
       end
 
-      row += ['Additional Space/Equipment', 'Promo Items', 'Networking Event', 'Comment']
+      row += ['Additional Space/Equipment', 'Promo Items', 'Comment']
       csv << row
 
       Company.all.each do |c|
@@ -93,7 +93,6 @@ class AdminController < ApplicationController
           c.name,
           c.description,
           (c.logo_permission ? 'Yes' : 'No'),
-          Company::LEVELS_TO_NAMES[c.level],
           (c.level == 2 ? c.gigawatt_option : 'N/A'),
           c.street_address,
           c.city,
@@ -113,7 +112,6 @@ class AdminController < ApplicationController
         row += [
           (c.additional_needed ? c.additional : 'Not needed. '),
           c.items.try(:join, ','),
-          c.networking_event,
           c.comment
         ]
 

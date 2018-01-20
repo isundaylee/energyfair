@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022222234) do
+ActiveRecord::Schema.define(version: 20180120055717) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.boolean  "logo_permission"
-    t.integer  "level"
     t.string   "gigawatt_option"
     t.string   "street_address"
     t.string   "city"
@@ -30,7 +29,6 @@ ActiveRecord::Schema.define(version: 20161022222234) do
     t.boolean  "additional_needed"
     t.text     "additional"
     t.text     "items"
-    t.string   "networking_event"
     t.text     "comment"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
