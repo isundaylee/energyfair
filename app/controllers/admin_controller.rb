@@ -74,7 +74,7 @@ class AdminController < ApplicationController
 
     CSV.open(tempfile.path, 'w') do |csv|
       row = []
-      row += ['Name', 'Description', 'Logo Permission', 'Gigawatt Option', 'Street Address', 'City', 'Zip Code', 'Telephone', 'Number of Attendances']
+      row += ['Name', 'Description', 'Logo Permission', 'Option', 'Street Address', 'City', 'Zip Code', 'Telephone', 'Number of Attendances']
 
       1.upto(5) do |i|
         row += [
@@ -93,7 +93,7 @@ class AdminController < ApplicationController
           c.name,
           c.description,
           (c.logo_permission ? 'Yes' : 'No'),
-          (c.level == 2 ? c.gigawatt_option : 'N/A'),
+          c.gigawatt_option,
           c.street_address,
           c.city,
           c.zip_code,
